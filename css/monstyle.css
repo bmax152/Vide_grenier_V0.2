@@ -1,0 +1,235 @@
+/* Generale */
+
+html {
+    position: relative;
+    min-height: 100%;
+    width: auto !important;
+    overflow-x: hidden !important;
+    /*  */
+    background-color: #CED8E1;
+}
+
+body {
+    margin-bottom: 170px;
+    /* border: 3px solid black; */
+    width: auto !important;
+    overflow-x: hidden !important;
+    background-color: #CED8E1;
+}
+
+/* Header */
+
+header {
+    /* border: 1px solid black; */
+    /* background-color: #2C3E50; */
+    /*  */
+    background-color: #3AC6EA;
+    width: 100%;
+}
+
+#paysageHead {
+    width: 100%;
+    height: auto;
+}
+
+#logoHead {
+    height: 100px;
+    margin: 5px 0 5px 50px;
+}
+
+#logo a {
+    text-decoration: none;
+}
+
+#menu_nav {
+    margin-top: 40px;
+    /* border: 1px solid black; */
+}
+
+#en_tete .nav-link, #logo, #logo a {
+    color: white;
+}
+
+#en_tete .nav-link:hover {
+    color: #0F2B40;
+}
+
+/* Footer */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 165px;
+    /* background-color: #2C3E50; */
+    /*  */
+    background-color: #3AC6EA;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 10px;
+    /* border: 1px solid black; */
+}
+
+footer div p {
+    margin-top: -15px;
+    /* border: 1px solid black; */
+}
+
+footer img {
+    width: 100px;
+    /* border: 1px solid black; */
+}
+
+/* Connexio/Inscription */
+
+#loginDb, #inscDB, #updateDB, #resaDB, #mailingForm, #cancelMailingForm {
+    width: 300px;
+    margin: 40px auto;
+}
+
+.red {
+    color: red;
+}
+
+/* Mon compte */
+
+#monCompte h3 {
+    padding: 10px 0 0 10px;
+}
+
+.boxSite {
+    /* border-radius: 5px; */
+    border: 3px white dashed;
+    box-shadow: 8px 8px 10px #2C3E50;
+    width: 70%;
+    margin: 50px auto;
+    background-color: #0F2B40;
+    color: white;
+    padding: 5px;
+}
+
+#inscriptionValidée {
+    text-align: center;
+    font-size: 20px;
+}
+
+#récap a {
+    padding-right: 10px;
+}
+
+#recapResa {
+    /* border: 1px solid black;  */
+    margin: 35px 0 50px 100px;
+}
+
+/* Vide grenier */
+
+#videGrenier img {
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 10px #2C3E50;
+    margin: 15px 0;
+}
+
+/* Reservation */
+
+#reservationVideGrenier .form-check-label, #reservationVideGrenier p {
+    width: 400px;
+}
+
+#infoResa {
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
+#mailing h3, #mailing h4 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Bouton */
+
+.bouton {
+    box-shadow: inset 0px 1px 0px 0px #54a3f7;
+    background: linear-gradient(to bottom, #2C3E50 5%, #0061a7 100%);
+    background-color: #2C3E50;
+    border-radius: 3px;
+    border: 1px solid #124d77;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #154682;
+}
+
+.bouton:hover {
+    background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+    background-color: #0061a7;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.bouton:active {
+    position: relative;
+    top: 1px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Qui sommes nous */
+
+#quiSommeNous img {
+    float: right;
+    width: 250px;
+    margin: 20px;
+}
+
+#quiSommeNous h2 {
+    margin: 50px 0 20px 0;
+}
+
+#quiSommeNous h1 {
+    margin: 20px 0 20px 0;
+}
+
+#quiSommeNous p {
+    padding: 0 30px;
+}
+
+#lienRejoinNous, #lienAdmin {
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Admin */
+
+#panneaux h2 {
+    margin: 0 0 80px 0;
+    text-align: center;
+}
+
+#panneaux h3 {
+    margin: 5px 0 10px 10px;
+}
+
+#panneaux a {
+    margin: 5px 0 10px 30px;
+}
+
+.table-striped {
+    color: white !important;
+}
+
+#listeVG div {
+    text-align: center;
+}
+
+#suivantPrecedent {
+
+    margin: 20px 0 10px 0;
+    padding: 0 10px;
+}
+
