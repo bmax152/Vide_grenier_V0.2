@@ -24,8 +24,28 @@ if (isset($_SESSION['id_util']) && $_SESSION["admin"] == 1) {
             try {
                 include 'inc_bdd.php';
 
+                // Nbr utilisateurs pour pagination
+                $countUtil = "SELECT COUNT(*) FROM utilisateur";
+
+                $resultatCount = $base->prepare($countUtil);
+
+                $resultatCount->execute();
+                $nbrUtil = $resultatCount->fetchColumn();
+                $nbrPage = (int) ($nbrUtil / 25) + 1;
+
+                if (isset($_GET['page'])) {
+
+                    $page = $_GET['page'];
+                } else {
+
+                    $page = 1;
+                }
+
+                $nbrLigneBase = ($page - 1) * 3;
+
+
                 // Un admin ne peut voir les autres admin
-                $select_util =  "SELECT * FROM utilisateur WHERE ADMIN_UTIL IS NULL";
+                $select_util =  "SELECT * FROM utilisateur WHERE ADMIN_UTIL IS NULL LIMIT $nbrLigneBase, 25";
 
                 $resultat_select = $base->prepare($select_util);
                 $resultat_select->execute();
@@ -41,13 +61,39 @@ if (isset($_SESSION['id_util']) && $_SESSION["admin"] == 1) {
                 echo "<section class = \"boxSite\">";
                 echo "<form method=\"POST\" action=\"admin_erase_util.php\" id=\"formSupp\">";
                 echo $table;
-                echo "<div><button class=\"bouton\" type=\"submit\">Supprimer</button></div></form>";
+                echo "<div class=\"text-center\"><button class=\"bouton\" type=\"submit\">Supprimer</button></div></form>";
+                
+
+
+                echo "<section class=\"row\" id=\"suivantPrecedent\">";
+
+                if ($page != 1) {
+
+                    echo "<div class=\"text-left col-md-6\"><a class=\"bouton\" href=\"admin_util.php?page=" . ($page - 1) . "\"><--</a></div>";
+                } else {
+
+                    echo "<div class=\"text-left col-md-6\"></div>";
+                }
+
+                if ($page != $nbrPage) {
+
+                    echo "<div class=\"text-right col-md-6\"><a class=\"bouton\" href=\"admin_util.php?page=" . ($page + 1) . "\">--></a></div>";
+                } else {
+
+                    echo "<div class=\"text-right col-md-6\"></div>";
+                }
+
+                echo "</section>";
+
                 echo "<div id=\"erreurSupp\" class=\"red\">";
                 if (isset($_GET["erreur_supp"])) {
 
                     echo $_GET["erreur_supp"];
                 }
-                echo "</div></section>";
+
+                echo "</div>";
+
+                echo "</section>";
             } catch (Exception $e) {
 
                 die('Erreur : ' . $e->getMessage());

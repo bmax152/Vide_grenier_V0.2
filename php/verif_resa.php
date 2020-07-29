@@ -29,7 +29,7 @@ if (isset($_SESSION["id_util"]) && isset($_GET['idVG']) && $_POST['nom'] !="" &&
         // Test réservation existent 
         $mail = htmlspecialchars($_POST['mail']);
 
-        $select_resa =  "SELECT * FROM reservation WHERE mail_resa = :doublon AND id_vg = :id";
+        $select_resa =  "SELECT * FROM reservation_vg WHERE mail_resa = :doublon AND id_vg = :id";
 
         $resultat_select = $base->prepare($select_resa);
 
@@ -106,7 +106,7 @@ if (isset($_SESSION["id_util"]) && isset($_GET['idVG']) && $_POST['nom'] !="" &&
                 $valueInfo = ", :info";
             }
 
-            $insert_resa = "INSERT INTO reservation (ID_VG, ID_UTIL, NOM_RESA, PRENOM_RESA, MAIL_RESA, ADDRESSE_RESA, CODE_POSTAL_RESA, VILLE_RESA, PORTABLE_RESA, CNI_RESA, DELIVRE_CNI_RESA, PAR_CNI_RESA $tempImma, NBR_RESA $tempInfo ) VALUES (:id_vg, :id, :nom, :prenom, :mail, :addresse, :postal, :ville, :portable, :cni, :delivrer, :par $valueImma, :nbr $valueInfo )";
+            $insert_resa = "INSERT INTO reservation_vg (ID_VG, ID_UTIL, NOM_RESA, PRENOM_RESA, MAIL_RESA, ADDRESSE_RESA, CODE_POSTAL_RESA, VILLE_RESA, PORTABLE_RESA, CNI_RESA, DELIVRE_CNI_RESA, PAR_CNI_RESA $tempImma, NBR_RESA $tempInfo ) VALUES (:id_vg, :id, :nom, :prenom, :mail, :addresse, :postal, :ville, :portable, :cni, :delivrer, :par $valueImma, :nbr $valueInfo )";
             $resultat_insert = $base->prepare($insert_resa);
 
             $resultat_insert->bindParam(':id_vg', $id_vg);

@@ -60,12 +60,7 @@ if (isset($_SESSION['id_util']) && $_SESSION["admin"] == 1) {
                 echo "<form method=\"POST\" action=\"admin_erase_ml.php\" id=\"formSuppMl\">";
                 echo $table;
                 echo "<div class=\"text-center\"><button class=\"bouton\" type=\"submit\">Supprimer</button></div></form>";
-                echo "<div id=\"erreurSuppMl\" class=\"red\">";
-                if (isset($_GET["erreur_supp_ml"])) {
-
-                    echo $_GET["erreur_supp_ml"];
-                }
-                echo "</div>";
+               
 
 
                 echo "<section class=\"row\" id=\"suivantPrecedent\">";
@@ -89,9 +84,12 @@ if (isset($_SESSION['id_util']) && $_SESSION["admin"] == 1) {
                 echo "</section>";
 
 
+                echo "<div id=\"erreurSuppMl\" class=\"red\">";
+                if (isset($_GET["erreur_supp_ml"])) {
 
-
-
+                    echo $_GET["erreur_supp_ml"];
+                }
+                echo "</div>";
 
 
                 echo "</section>";

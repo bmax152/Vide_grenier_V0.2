@@ -90,7 +90,7 @@ if (isset($_SESSION["id_util"])) {
                     }
 
                     // Rescherche et affiche les résa faites
-                    $select_resa = "SELECT * FROM reservation JOIN videgrenier ON reservation.id_vg = videgrenier.id_vg JOIN statuts ON reservation.statu_resa = statuts.id_statuts WHERE id_util = :id";
+                    $select_resa = "SELECT * FROM reservation_vg JOIN videgrenier ON reservation_vg.id_vg = videgrenier.id_vg JOIN statuts ON reservation_vg.statu_resa = statuts.id_statuts WHERE id_util = :id";
                     $resultat_select = $base->prepare($select_resa);
                     $resultat_select->bindParam(':id', $_SESSION["id_util"]);
                     $resultat_select->execute();

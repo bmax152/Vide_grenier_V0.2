@@ -15,6 +15,7 @@ if (isset($_SESSION['id_util']) && $_SESSION["admin"] == 1) {
     </head>
 
     <body>
+    
         <?php
         include 'inc_header.php';
         ?>
@@ -25,26 +26,23 @@ if (isset($_SESSION['id_util']) && $_SESSION["admin"] == 1) {
                 include 'inc_bdd.php';
 
                 // liste des demande de VG en attente de validation ou d'annulation
-                $select_attente =  "SELECT * FROM reservation JOIN videgrenier ON reservation.id_vg = videgrenier.id_vg JOIN statuts ON reservation.statu_resa = statuts.id_statuts WHERE STATU_RESA = 1";
+                $select_attente =  "SELECT * FROM reservation_vg JOIN videgrenier ON reservation_vg.id_vg = videgrenier.id_vg JOIN statuts ON reservation_vg.statu_resa = statuts.id_statuts WHERE STATU_RESA = 1";
 
                 $resultat_select = $base->prepare($select_attente);
                 $resultat_select->execute();
 
-                $table = "<table class=\"table table-striped\"><tr><th>Label VG</th><th>Nom</th><th>Prenom</th><th>Nombre de place</th><th>Commentaires</th><th class=\"text-center\">Valider</th><th class=\"text-center\">Annuler</th></tr>";
+                $table = "<table class=\"table table-striped\"><tr><th>Label VG</th><th>Nom</th><th>Prenom</th><th>Nombre de place</th><th>Commentaires</th><th class=\"text-center\">Voir</th></tr>";
 
-                // TODO: bouton valider annuler sur chaque ligne qui envoient sur le script sql puis ramene ici
-
-
+                
+                
                 while ($ligne = $resultat_select->fetch()) {
-
-                    $table .= "<tr><td>" . $ligne['LABEL_VG'] . "</td><td>" . $ligne['NOM_RESA'] . "</td><td>" . $ligne['PRENOM_RESA'] . "</td><td>" . $ligne['NBR_RESA'] . "</td><td>" . $ligne['INFO_RESA'] . "</td><td class=\"text-center\"><input type=\"radio\" id=\"" . $ligne['ID_UTIL'] . "\" name=\"choix". $ligne['ID_VG']."_" .$ligne['ID_UTIL']."\" value=\"" . $ligne['ID_VG']."_" .$ligne['ID_UTIL']. "\"></td><td class=\"text-center\"><input type=\"radio\" id=\"" . $ligne['ID_UTIL'] . "\" name=\"choix". $ligne['ID_VG']."_" .$ligne['ID_UTIL']."\" value=\"" . $ligne['ID_VG']."_" .$ligne['ID_UTIL']. "\"></td></tr>";
+                
+                    $table .= "<tr><td>" . $ligne['LABEL_VG'] . "</td><td>" . $ligne['NOM_RESA'] . "</td><td>" . $ligne['PRENOM_RESA'] . "</td><td>" . $ligne['NBR_RESA'] . "</td><td>" . $ligne['INFO_RESA'] . "</td><td class=\"text-center\"><a class=\"bouton\" href=\"admin_voir_resa.php?id_resa=".$ligne['ID_RESA']."\">Voir</a></td></tr>";
                 }
 
                 $table .= "</table>";
-                echo "<section class = \"boxSite\">";
-                echo "<form method=\"POST\" action=\"admin_erase_util.php\" id=\"formSupp\">";
+                echo "<section class = \"boxSite\">";    
                 echo $table;
-                echo "<div><button class=\"bouton\" type=\"submit\">Supprimer</button></div></form>";
                 echo "<div id=\"erreurSupp\" class=\"red\">";
                 if (isset($_GET["erreur_supp"])) {
 
